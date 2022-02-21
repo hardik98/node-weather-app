@@ -6,17 +6,16 @@ const handleSearch = () => {
   message1.textContent = "Loading...";
   message2.textContent = " ";
 
-  fetch(`http://localhost:3000/weather?address=${placeName.value}`).then(
-    (res) =>
-      res.json().then((data) => {
-        if (data.error) {
-          console.log(data.error);
-          message1.textContent = data.error;
-          message2.textContent = "";
-          return;
-        }
-        message1.textContent = data.location;
-        message2.textContent = data.foreCast;
-      })
+  fetch(`/weather?address=${placeName.value}`).then((res) =>
+    res.json().then((data) => {
+      if (data.error) {
+        console.log(data.error);
+        message1.textContent = data.error;
+        message2.textContent = "";
+        return;
+      }
+      message1.textContent = data.location;
+      message2.textContent = data.foreCast;
+    })
   );
 };
