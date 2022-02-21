@@ -9,9 +9,10 @@ const getForcast = (lat, long, callback) => {
     } else if (response.body.error) {
       callback("Unable to find location", undefined);
     } else {
+      console.log("data", response.body);
       callback(
         undefined,
-        `Its currently ${response.body.current.temperature} temperature but feels like ${response.body.current.feelslike}`
+        `Its currently ${response.body.current.temperature} temperature but feels like ${response.body.current.feelslike} with wind speed of ${response.body.current.wind_speed}`
       );
     }
   });
